@@ -1,7 +1,6 @@
 import Axios from 'axios'
-import { apiConfig } from '../config';
+import { apiConfig } from "../config";
 import * as _ from 'lodash';
-
 
 export const api = Axios.create({
     baseURL: apiConfig.backendUrl,
