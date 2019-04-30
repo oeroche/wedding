@@ -1,5 +1,5 @@
-import Axios from 'axios'
-import { apiConfig } from '../config';
+import Axios from 'axios';
+import { apiConfig } from '../../config';
 
 
 export const api = Axios.create({
