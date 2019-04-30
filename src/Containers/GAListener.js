@@ -4,10 +4,10 @@ import { withRouter} from 'react-router-dom'
 
 const sendPageView = (location) => {
     try {
-        window.gtag('config', 'GA_MEASUREMENT_ID', {
+        window.gtag('config', 'UA_MEASUREMENT_ID', {
             page_path: location,
         });
-        window.gtag('config', 'GA_MEASUREMENT_ID', {
+        window.gtag('config', 'AW_MEASUREMENT_ID', {
             page_path: location,
         });
     } catch (e) {

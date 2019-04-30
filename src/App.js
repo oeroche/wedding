@@ -9,11 +9,11 @@ import GAListener from './Containers/GAListener'
 function App() {
   return (
     <BrowserRouter>
-    <GAListener>
-      <Route exact to='/' component={HomeContainer}/>
-    </GAListener>
+      <GAListener>
+        <Route exact to='/' component={HomeContainer}/>
+      </GAListener>
     </BrowserRouter>
-  );
+  );  
 }
 
 export default App;
