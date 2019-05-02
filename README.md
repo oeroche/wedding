@@ -1,7 +1,5 @@
-<p align='center' width='300'>
-### 🍲
-</p>
-# React Webapp Boilerplate
+
+# 🍲 React Webapp Boilerplate
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
