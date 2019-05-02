@@ -1,7 +1,7 @@
 
   
 
-  <center> ## 🍲React Webapp Boilerplate </center>
+# 🍲React Webapp Boilerplate 
 
 ## Getting started
 > You must have [npm](https://www.npmjs.com/package/download) installed globally before you begin.  
