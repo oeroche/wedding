@@ -1,4 +1,12 @@
 
+<p align="center">
+  <b>Some Links:</b><br>
+  <a href="#">Link 1</a> |
+  <a href="#">Link 2</a> |
+  <a href="#">Link 3</a>
+  <br><br>
+  <img src="http://s.4cdn.org/image/title/105.gif">
+</p>
 # 🍲 React Webapp Boilerplate
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -17,7 +25,7 @@ Then run:
 Change the name of the boilerplate directory to the new project name you created on Step 0.
 
 #### 3. Set up a new project origin
-Next, `cd` into the project run the following in the command lines:
+Next, `cd` into the project run the following in the command lines:  
 ```
 git remote rm origin
 git remote add origin [YOUR_PROJECT_ADDRESS]
@@ -26,11 +34,11 @@ git config master.merge refs/heads/master
 ```
 
 #### 4. Install dependencies
-Next run in the command line:
+Next run in the command line:  
 `npm install`
 
 #### 5. Edit your project’s data
-Finally, update the metadata and config defaults to how you want them for your project in config.js.
+Finally, update the metadata and config defaults to how you want them for your project in <config.js>
 
 ## Motivation
 We build lots of projects here at Possible Future and we don’t want to re-write all the basic stuff _each time_ (unless you’re a junior dev, otherwise... what are you doing here?)
