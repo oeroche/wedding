@@ -4,7 +4,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Getting started
-> You must have <npm/> installed globally before you begin.  
+> You must have [npm](https://www.npmjs.com/package/download) installed globally before you begin.  
 > You also must have a repo for your project on Possible Future’s Github.  
 > If you don’t know how to do it or don’t have the access, ask your tech-lead.
 
@@ -30,7 +30,7 @@ Next run in the command line:
 `npm install`
 
 #### 5. Edit your project’s data
-Finally, update the metadata and config defaults to how you want them for your project in <config.js>
+Finally, update the metadata and config defaults to how you want them for your project in config.js.
 
 ## Motivation
 We build lots of projects here at Possible Future and we don’t want to re-write all the basic stuff _each time_ (unless you’re a junior dev, otherwise... what are you doing here?)
