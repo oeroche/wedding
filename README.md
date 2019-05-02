@@ -1,8 +1,7 @@
-<p align="center" size='20px'>
-  🍲
-<br><br>
-## React Webapp Boilerplate
-</p>
+
+  
+
+  <center> ## 🍲React Webapp Boilerplate </center>
 
 ## Getting started
 > You must have [npm](https://www.npmjs.com/package/download) installed globally before you begin.  
