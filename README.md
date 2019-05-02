@@ -1,6 +1,7 @@
-<p align="center">
+<p align="center" size='20px'>
   🍲
-<br><br>React Webapp Boilerplate
+<br><br>
+## React Webapp Boilerplate
 </p>
 
 ## Getting started
