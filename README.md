@@ -1,5 +1,5 @@
-<p align='center'>
-🍲
+<p align='center' width='300'>
+### 🍲
 </p>
 # React Webapp Boilerplate
 
