@@ -18,10 +18,10 @@ Change the name of the boilerplate directory to the new project name you created
 
 ### 3. Set up a new project origin
 Next, `cd` into the project run the following in the command lines:
-### `git remote rm origin
-git remote add origin [YOUR_PROJECT_ADDRESS]
-git config master.remote origin
-git config master.merge refs/heads/master`
+### `git remote rm origin`
+`git remote add origin [YOUR_PROJECT_ADDRESS]`
+`git config master.remote origin`
+`git config master.merge refs/heads/master`
 
 ### 4. Install dependencies
 Next run in the command line:
