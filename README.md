@@ -34,3 +34,6 @@ Finally, update the metadata and config defaults to how you want them for your p
 
 ## Motivation
 We build lots of projects here at Possible Future and we don’t want to re-write all the basic stuff _each time_ (unless you’re a junior dev, otherwise... what are you doing here?)
+
+## License
+Do not share this boilerplate yet for it’s not an open-source project. We’re not really sure what to do with it.
