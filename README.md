@@ -1,10 +1,8 @@
 <p align="center">
-  # 🍲React Webapp Boilerplate
+  🍲React Webapp Boilerplate
   <br><br>
   <img src="http://s.4cdn.org/image/title/105.gif">
 </p>
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Getting started
 > You must have [npm](https://www.npmjs.com/package/download) installed globally before you begin.  
