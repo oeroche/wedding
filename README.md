@@ -1,8 +1,15 @@
+Normal Text
 
 <p align="center">
-  # 🍲React Webapp Boilerplate
+  <b>Some Links:</b><br>
+  <a href="#">Link 1</a> |
+  <a href="#">Link 2</a> |
+  <a href="#">Link 3</a>
+  <br><br>
   <img src="http://s.4cdn.org/image/title/105.gif">
 </p>
+
+Normal text
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
