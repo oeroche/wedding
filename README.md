@@ -4,8 +4,8 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Getting started
-> You must have <npm/> installed globally before you begin.
-> You also must have a repo for your project on Possible Future’s Github.
+> You must have <npm/> installed globally before you begin.  
+> You also must have a repo for your project on Possible Future’s Github.  
 > If you don’t know how to do it or don’t have the access, ask your tech-lead.
 
 #### 1. Download this project
