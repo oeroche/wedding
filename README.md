@@ -32,3 +32,5 @@ Next run in the command line:
 #### 5. Edit your project’s data
 Finally, update the metadata and config defaults to how you want them for your project in <config.js>
 
+## Motivation
+We build lots of projects here at Possible Future and we don’t want to re-write all the basic stuff _each time_ (unless you’re a junior dev, otherwise... what are you doing here?)
