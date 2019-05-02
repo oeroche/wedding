@@ -5,7 +5,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Getting started
 > _You must have <npm/> installed globally before you begin_
+
 > _You also must have a repo for your project on Possible Future’s Github._
+
 > _If you don’t know how to do it or don’t have the access, ask your tech-lead._
 
 #### 1. Download this project
