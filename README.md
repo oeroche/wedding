@@ -1,7 +1,6 @@
 <p align="center">
-  🍲React Webapp Boilerplate
-  <br><br>
-  <img src="http://s.4cdn.org/image/title/105.gif">
+  🍲
+<br><br>React Webapp Boilerplate
 </p>
 
 ## Getting started
