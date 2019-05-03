@@ -1,15 +1,15 @@
 /* eslint-disable react/forbid-prop-types */
 import React from 'react';
-import { withRouter} from 'react-router-dom'
+import { withRouter } from 'react-router-dom';
 
 const sendPageView = (location, trackersID) => {
     try {
-        if(trackersID.UA) {
+        if (trackersID.UA) {
             window.gtag('config', `${trackersID.UA}`, {
                 page_path: location,
             });
         }
-        if(trackersID.UA) {           
+        if (trackersID.UA) {
             window.gtag('config', `${trackersID.AW}`, {
                 page_path: location,
             });
@@ -21,13 +21,13 @@ const sendPageView = (location, trackersID) => {
 
 class GAListener extends React.Component {
     componentDidMount() {
-        const { trackersID } = this.props
-        sendPageView(this.props.history.location.pathname, trackersID);
+        const { trackersID, history } = this.props;
+        sendPageView(history.location.pathname, trackersID);
     }
 
     componentDidUpdate() {
-        const { trackers } = this.props
-        sendPageView(this.props.history.location.pathname, trackersID);
+        const { trackersID, history } = this.props;
+        sendPageView(history.location.pathname, trackersID);
     }
 
     render() {
