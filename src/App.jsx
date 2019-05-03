@@ -3,7 +3,8 @@ import './App.css';
 import { BrowserRouter, Route, Redirect } from "react-router-dom";
 import { isLoggedIn } from './@helpers/login';
 import HomeContainer from './Containers/HomeContainer'
-import GAListener from './Containers/GAListener'
+import {trackersID} from '../config'
+import GAListener from './@trackers/GAListener'
 
 const PrivateRoute = ({ component: ComponentToRender, ...rest }) => (
   <Route
@@ -20,7 +21,7 @@ const PrivateRoute = ({ component: ComponentToRender, ...rest }) => (
 function App() {
   return (
     <BrowserRouter>
-    <GAListener>
+    <GAListener trackersID={trackersID}>
       <Route exact to='/' component={HomeContainer}/>
     </GAListener>
     </BrowserRouter>

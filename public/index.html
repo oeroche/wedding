@@ -31,14 +31,14 @@
         "script",
         "https://connect.facebook.net/en_US/fbevents.js"
       );
-      fbq("init", "[YOUR_ID]");
+      fbq("init", "%REACT_APP_TRACKER_FB%");
       fbq("track", "PageView");
     </script>
     <noscript>
       <img
         height="1"
         width="1"
-        src="https://www.facebook.com/tr?id=[YOUR_ID]&ev=PageView
+        src="https://www.facebook.com/tr?id=%REACT_APP_TRACKER_FB%&ev=PageView
 &noscript=1"
       />
     </noscript>
@@ -77,7 +77,7 @@
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script
     async
-    src="https://www.googletagmanager.com/gtag/js?id=[YOUR_UA_ID]"
+    src="https://www.googletagmanager.com/gtag/js?id=%REACT_APP_TRACKER_UA%"
   ></script>
 
   <script>
@@ -88,8 +88,5 @@
     }
 
     gtag("js", new Date());
-
-    gtag("config", "[YOUR_UA_ID]");
-    gtag("config", "[YOUR_AW_ID]");
   </script>
 </html>

@@ -32,13 +32,13 @@ securedApi.interceptors.response.use(
 
 export const login = async ({ identifier, password }) => {
     const result = await api.post('/login', { identifier, password });
-    return _.get(result, 'data', null);
+    return result;
 };
 
 export const signup = async ({ username, password, email }) => {
     try {
         const result = await api.post('/signup', { username, password, email });
-        return _.get(result, 'data', null);
+        return result;
     } catch (e) {
         throw e;
     }
