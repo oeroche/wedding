@@ -1,8 +1,10 @@
 import React from 'react';
 import './App.css';
+import PropTypes from 'prop-types';
 import {
-    Route, Redirect, Switch, withRouter,
+    Redirect, withRouter, Route, Switch,
 } from 'react-router-dom';
+import { Provider } from 'react-redux';
 import { metrics } from 'react-metrics';
 import { isLoggedIn } from './@helpers/login';
 import HomeContainer from './Containers/HomeContainer';
@@ -37,15 +39,17 @@ const config = {
 };
 
 
-class App extends React.Component {
-    render() {
-        return (
-            <Switch>
-                <Route exact path="/" component={HomeContainer} />
-                <Route path="/coucou" component={HomeContainer} />
-            </Switch>
-        );
-    }
-}
+const App = ({ store }) => (
+    <Provider store={store}>
+        <Switch>
+            <Route exact path="/" component={HomeContainer} />
+            <Route path="/coucou" component={HomeContainer} />
+        </Switch>
+    </Provider>
+);
+
+App.propTypes = {
+    store: PropTypes.object.isRequired,
+};
 
 export default withRouter(metrics(config)(App));
