@@ -1,2 +1,7 @@
 export const RESET_STATE = 'RESET_STATE';
 export const UPDATE_STATE = 'UPDATE_STATE';
+
+// SAGA ACTIONS
+export const API_CALL_REQUEST = 'API_CALL_REQUEST';
+export const API_CALL_SUCCESS = 'API_CALL_SUCCESS';
+export const API_CALL_FAILURE = 'API_CALL_FAILURE';

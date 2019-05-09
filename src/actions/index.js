@@ -1,6 +1,7 @@
 import {
     RESET_STATE,
     UPDATE_STATE,
+    API_CALL_REQUEST,
 } from '../constants/action-types';
 
 export const resetState = () => ({
@@ -12,4 +13,8 @@ export const updateState = text => ({
     payload: {
         text,
     },
+});
+
+export const onRequestDog = () => ({
+    type: API_CALL_REQUEST,
 });
