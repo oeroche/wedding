@@ -10,6 +10,7 @@ import { isLoggedIn } from './@helpers/login';
 import HomeContainer from './Containers/HomeContainer';
 import GoogleAnalytics from './@trackers/GoogleAnalytics';
 import { trackersID } from './config';
+import ErrorsDisplayContainer from './Containers/ErrorsDisplayContainer';
 
 
 const PrivateRoute = ({ component: ComponentToRender, ...rest }) => (
@@ -41,6 +42,7 @@ const config = {
 
 const App = ({ store }) => (
     <Provider store={store}>
+        <ErrorsDisplayContainer />
         <Switch>
             <Route exact path="/" component={HomeContainer} />
             <Route path="/coucou" component={HomeContainer} />

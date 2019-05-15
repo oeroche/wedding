@@ -2,6 +2,7 @@ import {
     RESET_STATE,
     UPDATE_STATE,
     API_CALL_REQUEST,
+    DISMISS_ERROR,
 } from '../constants/action-types';
 
 export const resetState = () => ({
@@ -17,4 +18,13 @@ export const updateState = text => ({
 
 export const onRequestDog = () => ({
     type: API_CALL_REQUEST,
+});
+
+export const requestAlert = (type, message) => ({
+    type: type,
+    message,
+});
+
+export const dismissError = () => ({
+    type: DISMISS_ERROR,
 });

@@ -5,3 +5,9 @@ export const UPDATE_STATE = 'UPDATE_STATE';
 export const API_CALL_REQUEST = 'API_CALL_REQUEST';
 export const API_CALL_SUCCESS = 'API_CALL_SUCCESS';
 export const API_CALL_FAILURE = 'API_CALL_FAILURE';
+
+// ERROR ACTIONS
+export const ERROR = 'ERROR';
+export const WARNING = 'WARNING';
+export const SUCCESS = 'SUCCESS';
+export const DISMISS_ERROR = 'DISMISS_ERROR';
