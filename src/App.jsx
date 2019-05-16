@@ -9,8 +9,11 @@ import { metrics } from 'react-metrics';
 import { isLoggedIn } from './@helpers/login';
 import HomeContainer from './Containers/HomeContainer';
 import GoogleAnalytics from './@trackers/GoogleAnalytics';
+import Amplitude from './@trackers/Amplitude';
 import { trackersID } from './config';
 import ErrorsDisplayContainer from './Containers/ErrorsDisplayContainer';
+import {PropTypes as RMPropTypes} from "react-metrics";
+
 
 
 const PrivateRoute = ({ component: ComponentToRender, ...rest }) => (
@@ -31,6 +34,12 @@ const config = {
         api: new GoogleAnalytics({
             trackingId: trackersID.UA,
         }),
+    },
+    {
+        name: 'Amplitude',
+        api: new Amplitude({
+            trackingId: trackersID.AM,
+        }),
     }],
     pageViewEvent: 'pageLoad',
     pageDefaults: ({ pathname }) => ({
@@ -40,15 +49,26 @@ const config = {
 };
 
 
-const App = ({ store }) => (
-    <Provider store={store}>
+class App extends React.Component {
+    static contextTypes = {
+        metrics: RMPropTypes.metrics
+    }
+    componentDidMount() {
+        this.context.metrics.track("customEventName");
+    }
+ render() {
+     const { store } = this.props
+    return (<Provider store={store}>
         <ErrorsDisplayContainer />
         <Switch>
             <Route exact path="/" component={HomeContainer} />
             <Route path="/coucou" component={HomeContainer} />
         </Switch>
-    </Provider>
-);
+    </Provider>)
+ }
+}
+    
+
 
 App.propTypes = {
     store: PropTypes.object.isRequired,

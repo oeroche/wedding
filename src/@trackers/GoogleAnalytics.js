@@ -19,19 +19,11 @@ class GoogleAnalytics {
 
     pageView(eventName, params) {
         if (!trackersID.UA) return;
-        console.log(params)
-        window.gtag('config', `${trackersID.UA}`, {
-            page_path: params.pathname,
-        });
-        return;
-    }
-
-    user(userId) {
-        return new Promise((resolve) => {
-            this.userId = userId;
-            resolve({
-                userId,
+        return new Promise((resolve, reject) => {
+            window.gtag('config', `${trackersID.UA}`, {
+                page_path: params.pathname,
             });
+            resolve();
         });
     }
 
@@ -43,17 +35,6 @@ class GoogleAnalytics {
     }
 
 
-    _track(eventName, params) {
-        if (eventName === 'pageView') {
-            console.log('params.category, params', params.category, params);
-        }
-    }
-
-    _load() {
-        return (
-            console.log('hello from _load')
-        );
-    }
 }
 
 export default GoogleAnalytics;
