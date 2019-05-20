@@ -6,19 +6,18 @@
 > You also must have a repo for your project on Possible Future’s Github.  
 > If you don’t know how to do it or don’t have the access, ask your tech-lead.
 
-#### 1. Download this project
+#### 1. Download and rename this project
 
 Open Terminal and change the current working directory to the location where you want the cloned directory to be made.  
 Then run:  
-`git clone git@github.com:frenchbureau/react-webapp-boilerplate.git`
+`git clone git@github.com:frenchbureau/react-webapp-boilerplate.git [YOUR_PROJECT_NAME]`
 
-#### 2. Edit your directory name
-
-Change the name of the boilerplate directory to the new project name you created on Step 0.
-
-#### 3. Set up a new project origin
+#### 2. Clean existing boilerplate history
 
 Next, `cd` into the project run the following in the command lines:
+`rm -rf .git`
+
+#### 3. Set up a new project origin
 
 ```
 git remote rm origin
@@ -42,34 +41,31 @@ For now you're free to choose between Semantic-UI or Bootstrap 4 for there's sti
 
 #### React Semantic UI
 
-Work in progress
+Run:  
+`npm i semantic-ui-react`
 
-> Run:  
-> `npm i semantic-ui-react`
-
-> Then you just have to import [Semantic's elements](https://react.semantic-ui.com/views/card/) in your Components. For example :
-> `import { Card, Header, Reveal, Grid, Image } from 'semantic-ui-react';`
+Then you just have to import [Semantic's elements](https://react.semantic-ui.com/views/card/) in your Components.
+For example :
+`import { Card, Header, Reveal, Grid, Image } from 'semantic-ui-react';`
 
 #### React Bootstrap 4
 
-Work in progress
+Run:  
+`npm install react-bootstrap bootstrap`
 
-> Run:  
-> `npm install --save bootstrap`
-
-> Then you just have to import [Semantic's elements](https://react.semantic-ui.com/views/card/) in your Components. For example :
-> `import { Card, Header, Reveal, Grid, Image } from 'semantic-ui-react';`
+Then you just have to import [Bootstrap's elements](https://react-bootstrap.netlify.com/components/alerts/) in your Components.
+For example :
+`import { Button } from 'react-bootstrap';`
 
 ## Trackers
 
-WIP
+We adopted a versatile approach to set trackers.
 
-> We adopted a versatile approach to set trackers.
-> Google analytics
->
-> 1. Add a vendor
-> 2. Send the data according to the tracker you want to use
-> 3. ...
+0. Install the tracker's package and create an account to get the APIkey
+1. In config.js add the proper APIkey to trackersID
+1. In App.jsx, add a vendor in the vendor array
+1. Create a new tracker file in **@trackers**
+1. Create a class and add your tracker proper code to the **pageView()** and **track()** methods
 
 ## Motivation
 
