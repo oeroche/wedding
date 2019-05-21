@@ -1,19 +1,18 @@
 import React from 'react';
 import './App.css';
-import PropTypes from 'prop-types';
 import {
-    Redirect, withRouter, Route, Switch,
+    withRouter, Redirect, Route, Switch
 } from 'react-router-dom';
+import { PersistGate } from 'redux-persist/integration/react'
 import { Provider } from 'react-redux';
-import { metrics } from 'react-metrics';
 import { isLoggedIn } from './@helpers/login';
 import HomeContainer from './Containers/HomeContainer';
-import GoogleAnalytics from './@trackers/GoogleAnalytics';
-import Amplitude from './@trackers/Amplitude';
-import { trackersID } from './config';
+import LoginContainer from './Containers/LoginContainer';
+import SignUpContainer from './Containers/SignUpContainer';
+// import GoogleAnalytics from './@trackers/GoogleAnalytics';
+// import { trackersID } from './config';
 import ErrorsDisplayContainer from './Containers/ErrorsDisplayContainer';
-import {PropTypes as RMPropTypes} from "react-metrics";
-
+import { store, persistor } from './store'
 
 
 const PrivateRoute = ({ component: ComponentToRender, ...rest }) => (
@@ -28,50 +27,33 @@ const PrivateRoute = ({ component: ComponentToRender, ...rest }) => (
     />
 );
 
-const config = {
-    vendors: [{
-        name: 'Google Analytics',
-        api: new GoogleAnalytics({
-            trackingId: trackersID.UA,
-        }),
-    },
-    {
-        name: 'Amplitude',
-        api: new Amplitude({
-            trackingId: trackersID.AM,
-        }),
-    }],
-    pageViewEvent: 'pageLoad',
-    pageDefaults: ({ pathname }) => ({
-        siteName: 'My Web Site',
-        pathname, // @TODO set dynamic website name along with package.json
-    }),
-};
+// const config = {
+//     vendors: [{
+//         name: 'Google Analytics',
+//         api: new GoogleAnalytics({
+//             trackingId: trackersID.UA,
+//         }),
+//     }],
+//     pageViewEvent: 'pageLoad',
+//     pageDefaults: ({ pathname }) => ({
+//         siteName: 'My Web Site',
+//         pathname, // @TODO set dynamic website name along with package.json
+//     }),
+// };
+
+const App = () => (
+    <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}>
+            <ErrorsDisplayContainer />
+            <Switch>
+                <Route exact path="/login" component={LoginContainer} />
+                <Route exact path='/signup' component={SignUpContainer} />
+                <PrivateRoute path="/home" component={HomeContainer} />
+            </Switch>
+        </PersistGate>
 
 
-class App extends React.Component {
-    static contextTypes = {
-        metrics: RMPropTypes.metrics
-    }
-    componentDidMount() {
-        this.context.metrics.track("customEventName");
-    }
- render() {
-     const { store } = this.props
-    return (<Provider store={store}>
-        <ErrorsDisplayContainer />
-        <Switch>
-            <Route exact path="/" component={HomeContainer} />
-            <Route path="/coucou" component={HomeContainer} />
-        </Switch>
-    </Provider>)
- }
-}
-    
+    </Provider>
+)
 
-
-App.propTypes = {
-    store: PropTypes.object.isRequired,
-};
-
-export default withRouter(metrics(config)(App));
+export default withRouter(App);

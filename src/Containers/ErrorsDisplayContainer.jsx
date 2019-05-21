@@ -7,7 +7,7 @@ const ErrorWrapper = styled.div`
   background-color: ${props => setAlertType(props.alertType)};
   min-height: 40px;
   padding: 10px;
-  position: absolute;
+  position: fixed;
   bottom: 100px;
   display: flex;
   justify-content: center;

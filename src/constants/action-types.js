@@ -1,13 +1,16 @@
-export const RESET_STATE = 'RESET_STATE';
-export const UPDATE_STATE = 'UPDATE_STATE';
-
-// SAGA ACTIONS
-export const API_CALL_REQUEST = 'API_CALL_REQUEST';
-export const API_CALL_SUCCESS = 'API_CALL_SUCCESS';
-export const API_CALL_FAILURE = 'API_CALL_FAILURE';
-
 // ERROR ACTIONS
 export const ERROR = 'ERROR';
 export const WARNING = 'WARNING';
 export const SUCCESS = 'SUCCESS';
 export const DISMISS_ERROR = 'DISMISS_ERROR';
+
+// ACTION STATE ACTIONS
+export const SET_ACTION_STATE = 'SET_ACTION_STATE';
+export const CLEAR_ACTION_STATE = 'CLEAR_ACTION_STATE';
+
+// USER ACTIONS
+export const SIGNUP = 'SIGNUP';
+export const SIGNUP_SUCCESS = 'SIGNUP_SUCCESS';
+export const LOGIN = 'LOGIN';
+export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
+export const LOGOUT = 'LOGOUT';

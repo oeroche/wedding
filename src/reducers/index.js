@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux';
-import baseReducer from './baseReducer';
-import sagaReducer from './sagaReducer';
 import errorsReducer from './errorsReducer';
+import actionStateReducer from './actionStateReducer';
+import userReducer from './userReducer';
 
 const globalReducer = combineReducers({
-    baseReducer,
-    sagaReducer,
     errorsReducer,
+    actionStateReducer,
+    userReducer,
 });
 
 export default globalReducer;

@@ -1,8 +1,9 @@
 import * as api from '../services/api';
+import { store } from '../store';
 
-export const signup = async (email, password) => {
+export const signUp = async (email, password) => {
     try {
-        const result = await api.signup(email, password);
+        const result = await api.signUp(email, password);
         if (result) {
             if (localStorage) localStorage.setItem('token', result.token);
         }
@@ -24,7 +25,7 @@ export const login = async (identifier, password) => {
     }
 };
 
-export const isLoggedIn = () => (typeof window !== 'undefined' ? !!localStorage.getItem('token') : false);
+export const isLoggedIn = () => (store.getState().userReducer.isLoggedIn);
 
 export const Logout = () => {
     if (localStorage) localStorage.clear();

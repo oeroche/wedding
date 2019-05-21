@@ -28,6 +28,7 @@ class GoogleAnalytics {
     }
 
     track(eventName, params) {
+        console.log(eventName)
         return new Promise((resolve, reject) => {
             window.gtag('event', eventName, params);
             resolve();

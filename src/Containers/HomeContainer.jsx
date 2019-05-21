@@ -1,9 +1,8 @@
 /* eslint-disable react/destructuring-assignment */
 import React from 'react';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { resetState, updateState, onRequestDog, requestAlert } from '../actions';
+import { requestAlert, logout } from '../actions';
 
 const Title = styled.p`
     width: 100vw;
@@ -12,15 +11,7 @@ const Title = styled.p`
     font-size: 26px;
 `;
 
-const StateContainer = styled.div`
-    text-align: center;
-    background-color: lightgrey;
-    margin: 20px;
-    padding: 15px;
-    border-radius: 5px;
-`;
-
-const DogContainer = styled.div`
+const UserContainer = styled.div`
     text-align: center;
     margin: 20px;
     padding: 15px;
@@ -38,53 +29,33 @@ const ErrorContainer = styled.div`
 
 class HomeContainer extends React.Component {
 
-    handleUpdateStateButton = () => {
-        this.props.updateState('Me updated state !');
-    }
-
-    handleResetStateButton = () => {
-        this.props.resetState();
-    }
-
-    handleDogGeneration = () => {
-        this.props.onRequestDog();
-    }
-
     addAlert = (type, message) => () => {
         this.props.requestAlert(type, message)
     }
 
+    logout = () => {
+        this.props.logout();
+        this.props.history.push('/login');
+    }
+
     render() {
         const {
-            test, fetching, dog, error,
+            error, user, isLoggedIn
         } = this.props;
         return (
             <div>
                 <Title>
                     Welcome to Possible Future’s Boilerplate!
                 </Title>
-                <StateContainer>
-                    <button type="button" onClick={this.handleUpdateStateButton}>Update State</button>
-                    <button type="button" onClick={this.handleResetStateButton}>Reset State</button>
-
-                    <p>State value: {test}</p>
-                </StateContainer>
-                <DogContainer>
-                    <img src={dog} height="400" alt="dog" />
-                    {dog ? (
-                        <p className="App-intro">Keep clicking for new dogs</p>
-                    ) : (
-                        <p className="App-intro">Generate a dog through Saga !</p>
-                    )}
-
-                    {fetching ? (
-                        <button type="button" disabled>Fetching...</button>
-                    ) : (
-                        <button type="button" onClick={this.handleDogGeneration}>Request a Dog</button>
-                    )}
-
-                    {error && <p style={{ color: 'red' }}>Uh oh - something went wrong!</p>}
-                </DogContainer>
+                {isLoggedIn && user && (
+                    <UserContainer>
+                        Congratulations, you're logged in ! <br />
+                        First Name: {user.firstName} <br />
+                        Last Name: {user.lastName} <br />
+                        Email: {user.email} <br />
+                        <button onClick={this.logout}>Logout</button>
+                    </UserContainer>
+                )}
                 <ErrorContainer>
                     <p>Generate alerts !</p>
                     <button onClick={this.addAlert('ERROR', 'This is an Error alert')}>Add Error Alert</button>
@@ -97,24 +68,13 @@ class HomeContainer extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    test: state.baseReducer.test,
-    fetching: state.sagaReducer.fetching,
-    dog: state.sagaReducer.dog,
-    error: state.sagaReducer.error,
+    user: state.userReducer.user,
+    isLoggedIn: state.userReducer.isLoggedIn
 });
 
-const mapDispatchToProps = dispatch => ({
-    resetState: () => dispatch(resetState()),
-    updateState: value => dispatch(updateState(value)),
-    onRequestDog: () => dispatch(onRequestDog()),
-    requestAlert: (type, message) => dispatch(requestAlert(type, message)),
-});
-
-HomeContainer.propTypes = {
-    test: PropTypes.string.isRequired,
-    updateState: PropTypes.func.isRequired,
-    resetState: PropTypes.func.isRequired,
-    onRequestDog: PropTypes.func.isRequired,
+const mapDispatchToProps = {
+    requestAlert,
+    logout
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomeContainer);

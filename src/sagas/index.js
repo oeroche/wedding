@@ -1,29 +1,52 @@
 import { takeLatest, call, put } from 'redux-saga/effects';
+import { signUp, login } from '../services/api';
 import axios from 'axios';
 
 // watcher saga: watches for actions dispatched to the store, starts worker saga
 export default function* watcherSaga() {
-    yield takeLatest('API_CALL_REQUEST', workerSaga);
+    yield takeLatest('LOGIN', loginProcess);
+    yield takeLatest('SIGNUP', signUpProcess);
 }
 
 // function that makes the api request and returns a Promise for response
-function fetchDog() {
-    return axios({
-        method: 'get',
-        url: 'https://dog.ceo/api/breeds/image/random',
-    });
+// function fetch() {
+//     return axios({
+//         method: 'get',
+//         url: 'https://dog.ceo/api/breeds/image/random',
+//     });
+// }
+
+function* loginProcess(action) {
+    try {
+        yield put({ type: 'SET_ACTION_STATE', payload: { variable: 'loginLoading', value: true } });
+
+        // Simulate API call
+        yield new Promise(resolve => setTimeout(resolve, 3000))
+
+        const result = yield call(login, action.payload);
+
+        yield put({ type: 'LOGIN_SUCCESS', payload: result });
+    } catch (error) {
+        yield put({ type: 'ERROR', payload: error });
+    } finally {
+        yield put({ type: 'CLEAR_ACTION_STATE', payload: { variable: 'loginLoading' } });
+    }
 }
 
-// worker saga: makes the api call when watcher saga sees the action
-function* workerSaga() {
+function* signUpProcess(action) {
     try {
-        const response = yield call(fetchDog);
-        const dog = response.data.message;
+        yield put({ type: 'SET_ACTION_STATE', payload: { variable: 'signUpLoading', value: true } });
 
-        // dispatch a success action to the store with the new dog
-        yield put({ type: 'API_CALL_SUCCESS', dog });
+        // Simulate API call
+        yield new Promise(resolve => setTimeout(resolve, 2000))
+
+        const result = yield call(signUp, action.payload);
+
+        yield put({ type: 'LOGIN_SUCCESS', payload: result });
+
     } catch (error) {
-    // dispatch a failure action to the store with the error
-        yield put({ type: 'API_CALL_FAILURE', error });
+        yield put({ type: 'ERROR', payload: error });
+    } finally {
+        yield put({ type: 'CLEAR_ACTION_STATE', payload: { variable: 'signUpLoading' } });
     }
 }

@@ -29,16 +29,34 @@ securedApi.interceptors.response.use(
     },
 );
 
-export const login = async ({ identifier, password }) => {
-    const result = await api.post('/login', { identifier, password });
-    return result;
+export const login = async ({ email, password }) => {
+    if (email === 'test@test.com' && password === 'test') {
+        const result = {
+            firstName: 'John',
+            lastName: 'Doe',
+            email: 'john@doe.com'
+        }
+        const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxMjM0NTY3ODkwIn0.HAPndkUNwmLLFIWEU6OV93H8LXDKz9ApaKdBHTkhmNA';
+        return result;
+    } else {
+        throw new Error('Wrong identifier');
+    }
 };
 
-export const signup = async ({ username, password, email }) => {
-    try {
-        const result = await api.post('/signup', { username, password, email });
-        return result;
-    } catch (e) {
-        throw e;
+export const signUp = async (user) => {
+    const result = {
+        firstName: user.firstName,
+        lastName: user.lastName,
+        email: user.email
     }
+    // try {
+    //     const result = await api.post('/signUp', { firstName, lastName, password, email });
+    //     return result;
+    // } catch (e) {
+    //     throw e;
+    // }
+    // throw new Error('Fuck you');
+
+
+    return result;
 };
