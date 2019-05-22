@@ -15,7 +15,13 @@ Then run:
 #### 2. Clean existing boilerplate history
 
 Next, `cd` into the project run the following in the command lines:
-`rm -rf .git`
+
+```
+rm -rf .git
+git init
+git add .
+git commit -m "initial commit with boilerplate"
+```
 
 #### 3. Set up a new project origin
 
