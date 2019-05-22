@@ -26,7 +26,6 @@ git commit -m "initial commit with boilerplate"
 #### 3. Set up a new project origin
 
 ```
-git remote rm origin
 git remote add origin [YOUR_PROJECT_ADDRESS]
 git config master.remote origin
 git config master.merge refs/heads/master
