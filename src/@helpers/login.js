@@ -1,9 +1,9 @@
 import * as api from '../services/api';
 import { store } from '../store';
 
-export const signUp = async (email, password) => {
+export const signup = async (email, password) => {
     try {
-        const result = await api.signUp(email, password);
+        const result = await api.signup(email, password);
         if (result) {
             if (localStorage) localStorage.setItem('token', result.token);
         }

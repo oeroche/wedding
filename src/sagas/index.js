@@ -1,12 +1,21 @@
 import { takeLatest, call, put } from 'redux-saga/effects';
-import { signUp, login } from '../services/api';
 import axios from 'axios';
+import {
+    signup, login, update, getResetPwdUrl,
+} from '../services/api';
+import {
+    SIGNUP,
+    LOGIN,
+    LOGOUT,
+    UPDATE,
+    GET_RESET_PWD_URL,
+    UPDATE_SUCCESS,
+    LOGIN_SUCCESS,
+    SET_ACTION_STATE,
+    CLEAR_ACTION_STATE,
+    ERROR,
+} from '../constants/action-types';
 
-// watcher saga: watches for actions dispatched to the store, starts worker saga
-export default function* watcherSaga() {
-    yield takeLatest('LOGIN', loginProcess);
-    yield takeLatest('SIGNUP', signUpProcess);
-}
 
 // function that makes the api request and returns a Promise for response
 // function fetch() {
@@ -18,35 +27,58 @@ export default function* watcherSaga() {
 
 function* loginProcess(action) {
     try {
-        yield put({ type: 'SET_ACTION_STATE', payload: { variable: 'loginLoading', value: true } });
-
-        // Simulate API call
-        yield new Promise(resolve => setTimeout(resolve, 3000))
-
-        const result = yield call(login, action.payload);
-
-        yield put({ type: 'LOGIN_SUCCESS', payload: result });
+        yield put({ type: SET_ACTION_STATE, payload: { variable: 'loginLoading', value: true } });
+        const result = yield login(action.payload);
+        localStorage.setItem('token', result.data.token);
+        yield put({ type: LOGIN_SUCCESS, payload: result });
     } catch (error) {
-        yield put({ type: 'ERROR', payload: error });
+        yield put({ type: ERROR, payload: error });
     } finally {
-        yield put({ type: 'CLEAR_ACTION_STATE', payload: { variable: 'loginLoading' } });
+        yield put({ type: CLEAR_ACTION_STATE, payload: { variable: 'loginLoading' } });
     }
 }
 
-function* signUpProcess(action) {
+function* signupProcess(action) {
     try {
-        yield put({ type: 'SET_ACTION_STATE', payload: { variable: 'signUpLoading', value: true } });
-
-        // Simulate API call
-        yield new Promise(resolve => setTimeout(resolve, 2000))
-
-        const result = yield call(signUp, action.payload);
-
-        yield put({ type: 'LOGIN_SUCCESS', payload: result });
-
+        yield put({ type: SET_ACTION_STATE, payload: { variable: 'signupLoading', value: true } });
+        const result = yield signup(action.payload);
+        localStorage.setItem('token', result.data.token);
+        yield put({ type: LOGIN_SUCCESS, payload: result });
     } catch (error) {
-        yield put({ type: 'ERROR', payload: error });
+        yield put({ type: ERROR, payload: error });
     } finally {
-        yield put({ type: 'CLEAR_ACTION_STATE', payload: { variable: 'signUpLoading' } });
+        yield put({ type: CLEAR_ACTION_STATE, payload: { variable: 'signupLoading' } });
     }
+}
+
+function* updateProcess(action) {
+    try {
+        yield put({ type: SET_ACTION_STATE, payload: { variable: 'signupLoading', value: true } });
+        const result = yield update(action.payload);
+        yield put({ type: UPDATE_SUCCESS, payload: result });
+    } catch (error) {
+        yield put({ type: ERROR, payload: error });
+    } finally {
+        yield put({ type: CLEAR_ACTION_STATE, payload: { variable: 'signupLoading' } });
+    }
+}
+
+function* resetPwdProcess(action) {
+    try {
+        yield put({ type: SET_ACTION_STATE, payload: { variable: 'signupLoading', value: true } });
+        yield getResetPwdUrl(action.payload);
+        // redirect to /signup
+    } catch (error) {
+        yield put({ type: ERROR, payload: error });
+    } finally {
+        yield put({ type: CLEAR_ACTION_STATE, payload: { variable: 'signupLoading' } });
+    }
+}
+
+// watcher saga: watches for actions dispatched to the store, starts worker saga
+export default function* watcherSaga() {
+    yield takeLatest(LOGIN, loginProcess);
+    yield takeLatest(SIGNUP, signupProcess);
+    yield takeLatest(UPDATE, updateProcess);
+    yield takeLatest(GET_RESET_PWD_URL, resetPwdProcess);
 }

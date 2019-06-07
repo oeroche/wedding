@@ -30,33 +30,40 @@ securedApi.interceptors.response.use(
 );
 
 export const login = async ({ email, password }) => {
-    if (email === 'test@test.com' && password === 'test') {
-        const result = {
-            firstName: 'John',
-            lastName: 'Doe',
-            email: 'john@doe.com'
-        }
-        const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxMjM0NTY3ODkwIn0.HAPndkUNwmLLFIWEU6OV93H8LXDKz9ApaKdBHTkhmNA';
-        return result;
-    } else {
+    try {
+        return api.post('/login', { email, password });
+    } catch (e) {
         throw new Error('Wrong identifier');
     }
 };
 
-export const signUp = async (user) => {
-    const result = {
-        firstName: user.firstName,
-        lastName: user.lastName,
-        email: user.email
+export const signup = async ({ email, password }) => {
+    try {
+        return api.post('/signup', {
+            email, password,
+        });
+    } catch (e) {
+        throw e;
     }
-    // try {
-    //     const result = await api.post('/signUp', { firstName, lastName, password, email });
-    //     return result;
-    // } catch (e) {
-    //     throw e;
-    // }
-    // throw new Error('Fuck you');
+};
+
+export const update = async ({ email }) => {
+    try {
+        return securedApi.put('/me', {
+            email,
+        });
+    } catch (e) {
+        throw e;
+    }
+};
 
 
-    return result;
+export const getResetPwdUrl = async ({ email }) => {
+    try {
+        return api.post('/forgotpassword', {
+            email,
+        });
+    } catch (e) {
+        throw e;
+    }
 };

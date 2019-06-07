@@ -6,25 +6,17 @@
     "browser": true
   },
   "rules": {
-    "indent": ["error", "tabs"],
-    "no-tabs": [0, {"allowIndentationTabs": true}],
-    "max-len": ["error", { "code": 160 }],
-    "no-param-reassign": "off",
-    "no-console": [1, { "allow": ["warn", "error"] }],
-    "no-use-before-define": ["error", "nofunc"],
+    "semi": 0,
+    "indent": [2, 4],
+    "babel/semi": 1,
+    "max-len": [2, { "code": 200 }],
     "react/jsx-indent-props": [2, 4],
     "react/jsx-indent": [2, 4],
-    "react/no-unescaped-entities": 1,
-    "react/forbid-prop-types": false,
-    "react/jsx-one-expression-per-line": "literal",
     "react/jsx-filename-extension": [
       1,
       {
-        "extensions": [".jsx"]
+        "extensions": [".js", ".jsx"]
       }
-    ],
-    "import/no-named-as-default": false,
-    "jsx-a11y/click-events-have-key-events": false,
-    "jsx-a11y/interactive-supports-focus": false
+    ]
   }
 }
