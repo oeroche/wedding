@@ -14,7 +14,8 @@ import ForgotPasswordContainer from './Containers/ForgotPasswordContainer';
 // import { trackersID } from './config';
 import ErrorsDisplayContainer from './Containers/ErrorsDisplayContainer';
 import { store, persistor } from './store';
-
+import LandingView from './Views/LandingView';
+import MainView from './Views/MainView';
 
 const PrivateRoute = ({ component: ComponentToRender, ...rest }) => (
     <Route
@@ -28,33 +29,15 @@ const PrivateRoute = ({ component: ComponentToRender, ...rest }) => (
     />
 );
 
-// const config = {
-//     vendors: [{
-//         name: 'Google Analytics',
-//         api: new GoogleAnalytics({
-//             trackingId: trackersID.UA,
-//         }),
-//     }],
-//     pageViewEvent: 'pageLoad',
-//     pageDefaults: ({ pathname }) => ({
-//         siteName: 'My Web Site',
-//         pathname, // @TODO set dynamic website name along with package.json
-//     }),
-// };
-
 const App = () => (
     <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
             <ErrorsDisplayContainer />
             <Switch>
-                <Route exact path="/login" component={LoginContainer} />
-                <Route exact path="/signup" component={SignUpContainer} />
-                <PrivateRoute path="/home" component={HomeContainer} />
-                <Route path="/forgotpassword" component={ForgotPasswordContainer} />
+                <Route exact path="/landing" component={LandingView} />
+                <Route path="/" component={MainView} />
             </Switch>
         </PersistGate>
-
-
     </Provider>
 );
 

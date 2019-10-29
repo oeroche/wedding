@@ -7,7 +7,7 @@ import {
 } from 'formik';
 import * as Yup from 'yup';
 import { requestAlert, logout, update } from '../actions';
-
+import InvitationComponent from '../Components/InvitationComponent';
 
 const Title = styled.p`
     width: 100vw;
@@ -31,7 +31,6 @@ const ErrorContainer = styled.div`
     background-color: lightgrey;
     border-radius: 5px;
 `;
-
 
 const signupSchema = Yup.object().shape({
     firstName: Yup.string(),
@@ -57,61 +56,8 @@ class HomeContainer extends React.Component {
         } = this.props;
         return (
             <div>
-                <Title>
-                    Welcome to Possible Future’s Boilerplate!
-                </Title>
-                {isLoggedIn && user && (
-                    <UserContainer>
-                        Congratulations, you are logged in !
-
-                        <Formik
-                            initialValues={{
-                                firstName: user.lastName, lastName: user.lastName, email: user.email,
-                            }}
-                            validationSchema={signupSchema}
-                            onSubmit={(values) => {
-                                updateUser({
-                                    firstName: values.firstName,
-                                    lastName: values.lastName,
-                                    email: values.email,
-                                });
-                            }}
-                        >
-                            {() => (
-                                <Form>
-                                    <label htmlFor="firstName">
-                                    First Name
-                                        <Field type="text" name="firstName" placeholder="Your first name" />
-                                        <ErrorMessage name="firstName" component="div" />
-                                    </label>
-                                    <br />
-                                    <label htmlFor="lastName">
-                                    Last Name
-                                        <Field type="text" name="lastName" placeholder="Your last name" />
-                                        <ErrorMessage name="lastName" component="div" />
-                                    </label>
-                                    <br />
-                                    <label htmlFor="email">
-                                    Email
-                                        <Field type="email" name="email" placeholder="Your email" />
-                                        <ErrorMessage name="email" component="div" />
-                                    </label>
-                                    <br />
-                                    <button type="submit">
-										Submit my changes
-                                    </button>
-                                </Form>
-                            )}
-                        </Formik>
-                        <button type="button" onClick={this.logout}>Logout</button>
-                    </UserContainer>
-                )}
-                <ErrorContainer>
-                    <p>Generate alerts !</p>
-                    <button type="button" onClick={this.addAlert('ERROR', 'This is an Error alert')}>Add Error Alert</button>
-                    <button type="button" onClick={this.addAlert('WARNING', 'This is a Warning alert')}>Add Warning Alert</button>
-                    <button type="button" onClick={this.addAlert('SUCCESS', 'This is a Success alert')}>Add Success Alert</button>
-                </ErrorContainer>
+                {/* <Title>Welcome to Possible Future’s Boilerplate!</Title> */}
+                <InvitationComponent />
             </div>
         );
     }
@@ -128,4 +74,7 @@ const mapDispatchToProps = {
     updateUser: update,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(HomeContainer);
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps,
+)(HomeContainer);

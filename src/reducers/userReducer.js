@@ -1,8 +1,4 @@
-import {
-    LOGOUT,
-    LOGIN_SUCCESS,
-    UPDATE_SUCCESS,
-} from '../constants/action-types';
+import { LOGOUT, LOGIN_SUCCESS, UPDATE_SUCCESS } from '../constants/action-types';
 
 const initialState = {
     isLoggedIn: false,
@@ -16,7 +12,7 @@ function userReducer(state = initialState, action) {
         return {
             ...state,
             isLoggedIn: true,
-            user: action.payload.data.user,
+            user: action.payload,
         };
     case LOGOUT:
         return {

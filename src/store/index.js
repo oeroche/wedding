@@ -22,11 +22,13 @@ const middlewares = applyMiddleware(sagaMiddleware);
 /** Create redux store */
 export const store = createStore(
     persistedReducer,
-    compose(middlewares, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()),
+    compose(
+        middlewares,
+        window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : f => f,
+    ),
 );
 
-export const persistor = persistStore(store)
+export const persistor = persistStore(store);
 
 /** run saga watchers */
 sagaMiddleware.run(watcherSaga);
-
